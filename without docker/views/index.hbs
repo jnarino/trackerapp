@@ -1,0 +1,40 @@
+<h1>Geolocalizador</h1>
+    <h3>Insert Data</h3>
+    <form action="/insert" method="post">
+        <div class="input">
+            <label for="Latitud">Latitud</label>
+            <input type="text" id="Latitud" name="Latitud">
+        </div>
+        <div class="input">
+            <label for="Longitud">Longitud</label>
+            <input type="text" id="Longitud" name="Longitud">
+        </div>
+        <button type="submit">enviar</button>
+        <button type="button" onclick="getPosition();">Obtener posiciones</button>
+        <script type="text/javascript">
+    function sendPosition() {
+      var userid = document.getElementById("userid").value;
+      var latitude = document.getElementById("latitude").value;
+      var longitude = document.getElementById("longitude").value;
+      if (userid != "" && latitude != "" && longitude != "") {
+        $.get('/api/recvPos?userid=' + userid + '&latitude=' + latitude + '&longitude=' + longitude);
+        alert("Datos enviados al Servidor");
+        location.reload();
+      } else {
+        alert("Debe tener todos los campos llenos");
+      }
+    }
+    function getPosition() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          document.getElementById("Latitud").value = latitude;
+          document.getElementById("Longitud").value = longitude;
+        });
+      } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+      }
+    }
+  </script>
+    </form>

@@ -4,7 +4,7 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/test';
+var url = 'mongodb://10.131.137.224:27017/test';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,7 +19,7 @@ router.post('/insert', function(req, res, next) {
 
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
-    db.collection('user-data').insertOne(item, function(err, result) {
+    db.collection('data').insertOne(item, function(err, result) {
       assert.equal(null, err);
       console.log('Item inserted');
       db.close();

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="get">
+    <h3>Get Data</h3>
+    <a href="/maps/get-data">LOAD DATA</a>
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div>latitud: {{ this.latitud }}</div>
+                <div>longitud: {{ this.longitud }}</div>
+                <div>ID: {{ this._id }}</div>
+            </article>
+        {{/each}}
+    </div>
+</section>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+           data: getPoints(),
+           map: map
+         });
+
+      }
+
+      function getPoints() {
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAA3r05LR6zl67P7OQAN9gP5594K9hVM4&callback=initMap">
+    </script>
+  </body>
+</html>

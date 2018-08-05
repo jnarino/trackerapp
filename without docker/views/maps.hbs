@@ -41,23 +41,36 @@
   <div id="map"></div>
   <script>
     var divs = document.getElementsByClassName('test');
-    var dataValues = [];
-    for (var i = 0; i < divs.length; i++) {
-      dataValues.push(divs[i].innerHTML);
-    }
-    console.log(dataValues);
+    var dataValues = [{
+      lat: 6.2518,
+      lng: -75.5636
+    }, {
+      lat: 6.199548,
+      lng: -75.57934
+    }];
 
-    var rv = {};
-    var str1 = "{";
-    for (var i = 0; i < dataValues.length; i++) {
-      if (i % 2) {
-        rv[i] = (dataValues[i].concat('}'));
-      } else {
-        rv[i] = str1.concat(dataValues[i]);
-      }
-    }
-    console.log(rv);
+    var position = [];
+    var a;
+    var b;
+    for (var i = 1; i < divs.length; i = i + 2) {
+      a = divs[i - 1].innerHTML.split(":");
+      b = divs[i].innerHTML.split(":");
 
+
+      var lat = a[0];
+      var value = parseFloat(a[1]);
+      var value2 = parseFloat(b[1]);
+
+
+      position.push({
+        lat: value,
+        lng: value2
+      });
+
+
+    }
+
+    console.log(position);
 
 
     var flightPath;
@@ -74,16 +87,7 @@
       });
 
 
-      var flightPlanCoordinates = [{
-
-          lat: 6.2518,
-          lng: -75.5636
-        },
-        {
-          lat: 6.199548,
-          lng: -75.57934
-        }
-      ];
+      var flightPlanCoordinates = position;
       var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
         geodesic: true,

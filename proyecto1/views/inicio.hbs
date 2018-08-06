@@ -1,0 +1,82 @@
+<h1>Geolocalizador</h1>
+<h3>Insert Data</h3>
+<form name="inicio" action="/inicio/insert" method="post">
+  <div class="input">
+    <label for="Latitud">Latitud</label>
+    <input type="text" id="Latitud" name="Latitud">
+  </div>
+  <div class="input">
+    <label for="Longitud">Longitud</label>
+    <input type="text" id="Longitud" name="Longitud">
+  </div>
+  <div class="input">
+    <label for="email">email</label>
+    <input type="text" id="email">
+  </div>
+  <button type="submit">INSERT</button>
+  <button type="button" onclick="getPosition();">Obtener posiciones</button>
+  <button type="button" onclick="detener();">Detener</button>
+  <a href="/maps">mapa</a>
+  <script type="text/javascript">
+    load_data();
+
+    function load_data() {
+      var input = document.getElementById("email");
+      email.value = localStorage.getItem('email');
+    }
+
+
+    /**window.onload=function(){
+                                        getPosition();
+                                        window.setTimeout(document.inicio.submit(), 20000);
+                                    };
+                                    */
+
+    getPosition();
+    var wait = setTimeout("document.inicio.submit();", 10000);
+
+
+
+    function detener() {
+      if (wait) {
+        clearTimeout(wait);
+        wait = 0;
+      }
+    }
+
+
+    function sendPosition() {
+      var userid = document.getElementById("userid").value;
+      var latitude = document.getElementById("latitude").value;
+      var longitude = document.getElementById("longitude").value;
+      if (userid != "" && latitude != "" && longitude != "") {
+        $.get('/api/recvPos?userid=' + userid + '&latitude=' + latitude + '&longitude=' + longitude);
+        alert("Datos enviados al Servidor");
+        location.reload();
+      } else {
+        alert("Debe tener todos los campos llenos");
+      }
+    }
+
+    function getPosition() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition);
+      } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+      }
+    };
+
+    function updatePosition(position) {
+      if (navigator.geolocation) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById("Latitud").value = latitude;
+        document.getElementById("Longitud").value = longitude;
+      }
+    }
+    setInterval(function() {
+      updatePosition(getPosition());
+    }, 1000);
+  </script>
+
+</form>

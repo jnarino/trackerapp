@@ -1,2 +1,16 @@
-# trackerapp
-Aplicacion para enviar geolocalizacion en tiempo real using nodejs
+# Trackeapp Proyecto 1
+
+nodejs webapp with mongodb using geolocation to create routes using google maps 
+
+
+
+
+* assuming your already have installed docker-compose run the following commands
+inside "proyecto1" 
+
+## Running app using docker-compose
+
+```
+  $ docker-compose build
+  $ docker-compose up
+```

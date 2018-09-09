@@ -1,0 +1,17 @@
+✖	bin/
+✖	data/
+✔	public/stylesheets/style.css
+✔	routes/index.js
+			inicio.js
+			maps.js
+✖	scratch/
+-	ssl/
+✔	views/layouts/layout.hbs	??
+		 /error.hbs		??
+			index.hbs	?
+			inicio.hbs	?
+			maps.hbs	!
+			test.hbs	??
+
+Deteccion de problemas
+	http://localhost:3000/inicio/insert:: despues de 3 posiciones el sistema redirecciona a esta página

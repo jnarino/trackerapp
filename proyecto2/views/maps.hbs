@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+
+    #map {
+      height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <form name="maps" action="/maps/get-data" method="get">
+    <section>
+      <button type="submit">get</button>
+      <div>
+        {{# each items }}
+          <article id="prueba">
+            <div class="test">lat: {{ this.latitud }}</div>
+            <div class="test">lng: {{ this.longitud }}</div>
+          </article>
+          {{/each}}
+      </div>
+      <script>
+      </script>
+    </section>
+  </form>
+
+  <div id="map"></div>
+  <script>
+    var divs = document.getElementsByClassName('test');
+    var dataValues = [{
+      lat: 6.2518,
+      lng: -75.5636
+    }, {
+      lat: 6.199548,
+      lng: -75.57934
+    }];
+
+    var position = [];
+    var a;
+    var b;
+    for (var i = 1; i < divs.length; i = i + 2) {
+      a = divs[i - 1].innerHTML.split(":");
+      b = divs[i].innerHTML.split(":");
+
+
+      var lat = a[0];
+      var value = parseFloat(a[1]);
+      var value2 = parseFloat(b[1]);
+
+
+      position.push({
+        lat: value,
+        lng: value2
+      });
+
+
+    }
+
+    console.log(position);
+
+
+    var flightPath;
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {
+          lat: 6.2518,
+          lng: -75.5636
+        },
+        mapTypeId: 'terrain'
+      });
+
+
+      var flightPlanCoordinates = position;
+      var flightPath = new google.maps.Polyline({
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+
+      flightPath.setMap(map);
+
+
+    }
+
+    function getPoints() {}
+
+    // Loop through the results array and place a marker for each
+    // set of coordinates.
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAA3r05LR6zl67P7OQAN9gP5594K9hVM4&callback=initMap">
+  </script>
+</body>
+
+</html>

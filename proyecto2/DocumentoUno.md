@@ -24,7 +24,7 @@ __Requisitos Funcionales:__
 ### Detalles técnicos
 
 #### Diseño del sistema:
-![diseño](https://drive.google.com/file/d/1qFOdUfaA5hwZijSyU2UL4OkKMvpsDxeh/view)
+![diseño](http://img.fenixzone.net/i/DUFbwSM.png)
 
 #### Implementación:
 

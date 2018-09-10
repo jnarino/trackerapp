@@ -25,11 +25,11 @@ __Escenario de Disponiblidad__
 ### 2. Diseño:
 * __Vistas de arquitectura:__
 	* __Vista lógica:__
-	* ![vista](http://img.fenixzone.net/i/EU0jXZP.jpeg)
+	* ![vista](https://drive.google.com/file/d/1sagHukPr3c1jyX-3S4hCbN5LB6FUISel/view)
 	* __Vista de desarrollo:__
-	* ![vista](http://img.fenixzone.net/i/gSa3L5I.png)
+	* ![vista](https://drive.google.com/file/d/1Zbf4ZMFzsTjrA1fn9z0qNKqdG-MWSugH/view)
 	* __Vista física:__
-	* ![vista](http://img.fenixzone.net/i/rLvaHY8.png)
+	* ![vista](https://drive.google.com/file/d/1v3DuPhCyekPbwEIebRVuxbeYLBLS4jOS/view)
 
 
 * __Patrón de arquitectura:__

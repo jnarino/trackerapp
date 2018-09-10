@@ -32,9 +32,6 @@ __Escenario de Disponiblidad__
 	* ![vista](http://img.fenixzone.net/i/2Ff1qYN.png)
 
 
-* __Patrón de arquitectura:__
-
-
 * __Buenas Prácticas:__
 	* __Garantizar una recuperación de desastres:__ Debe tener una réplica de espejo del código y los datos desde el sitio primario. Esto sirve como una copia de seguridad en caso de fallo total del sitio primario.
 	* __DRY(Don’t repeat yourself):__ No repetir código, el código duplicado es propenso a generar errores y es difícil de mantener.

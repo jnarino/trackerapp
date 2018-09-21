@@ -10,7 +10,9 @@ services:
       - "80:80"
       - "443:443"
     depends_on:
-      - nodeapp
+      - nodeapp      
+    networks:
+      - my_net
   nodeapp:
     container_name: nodeapp
     restart: always
@@ -18,7 +20,9 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - mongo-server      
+      - mongo-server
+    networks:
+      - my_net
   mongo-server:
     container_name: mongo-server
     image: mongo
@@ -26,3 +30,7 @@ services:
       - ./data:/data/db
     ports:
     - "27017:27017"
+    networks:
+      - my_net
+networks:
+  my_net:

@@ -4,7 +4,7 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://10.131.137.224:27017/test';
+var url = 'mongodb://mongo-server:27017/test';
 
 /* GET home page.   mongodb://10.131.137.224:27017/test'   10.131.137.224:27017 */
 router.get('/', function(req, res, next) {
